@@ -2486,6 +2486,7 @@ Rebuild-OS)
     		FixRepo
     		AddSoftware
     		RaspiTheme
+    		PiConfigFixes
     		EnableNBDswap
     		whiptail --title "Extra software" --msgbox "Select any additional software you want to use or use Install-Custom-software to install a specific package from the Raspbian apt repository if you know its name. To quit the menu, use the cancel option. This menu can be later accessed from Install-Program from the main menu." 12 78
 			ExtraSoftware
