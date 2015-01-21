@@ -626,7 +626,7 @@ ltsp-chroot --arch armhf apt-get install -y ssh locales less fbset sudo psmisc s
 ltsp-chroot --arch armhf apt-get install -y python3-rpi.gpio python-rpi.gpio python-pip python-picamera python3-picamera x2x wolfram-engine xserver-xorg-video-fbturbo netsurf-common netsurf-gtk rpi-update
 ltsp-chroot --arch armhf apt-get install -y ftp libraspberrypi-bin python3-pifacecommon python3-pifacedigitalio python3-pifacedigital-scratch-handler python-pifacecommon python-pifacedigitalio i2c-tools linux-image-rpi-rpfv man-db
 ltsp-chroot --arch armhf apt-get install -y --no-install-recommends cifs-utils midori lxtask
-ltsp-chroot --arch armhf apt-get install -y minecraft-pi python-smbus dosfstools ruby
+ltsp-chroot --arch armhf apt-get install -y python-smbus dosfstools ruby
 ltsp-chroot --arch armhf apt-get install -y gstreamer1.0-x gstreamer1.0-omx gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-alsa gstreamer1.0-libav
 ltsp-chroot --arch armhf apt-get install --no-install-recommends -y epiphany-browser cgroup-bin
 ltsp-chroot apt-get install -y java-common oracle-java8-jdk apt-utils wpasupplicant wireless-tools firmware-atheros firmware-brcm80211 firmware-libertas firmware-ralink firmware-realtek libpng12-dev
@@ -760,7 +760,7 @@ FixDesktopIcons(){
 rm -rf /etc/skel/Desktop
 cd /opt/ltsp/armhf/usr/share/applications
 mkdir /etc/skel/Desktop
-sudo cp -a scratch.desktop idle.desktop idle3.desktop lxterminal.desktop debian-reference-common.desktop wolfram-mathematica.desktop epiphany-browser.desktop wolfram-language.desktop sonic-pi.desktop minecraft-pi.desktop /etc/skel/Desktop
+sudo cp -a scratch.desktop idle.desktop idle3.desktop lxterminal.desktop debian-reference-common.desktop wolfram-mathematica.desktop epiphany-browser.desktop wolfram-language.desktop sonic-pi.desktop /etc/skel/Desktop
 cd /etc/skel
 wget "https://github.com/KenT2/python-games/tarball/master" -O python_games.tar.gz
 tar -xvf python_games.tar.gz
