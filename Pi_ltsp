@@ -656,7 +656,7 @@ apt-get install -y bindfs
 PiConfigFixes(){
 #Configuration changes to Raspberry Pi files, mostly to do with LXDE instead of Raspbian itself
 
-ltsp-chroot --arch armhf sed /etc/xdg/lxsession/LXDE/desktop.conf -i -e "s|sNet/ThemeName.*|sNet/ThemeName=Mist|"
+ltsp-chroot --arch armhf sed /etc/xdg/lxsession/LXDE/desktop.conf -i -e "s|sNet/ThemeName.*|sNet/ThemeName=Clearlooks|"
 ltsp-chroot --arch armhf sed /etc/xdg/openbox/LXDE/rc.xml -i -e \
 "s|<drawContents>yes</drawContents>|<drawContents>no</drawContents>|"
 ltsp-chroot --arch armhf apt-get install -y raspberrypi-artwork

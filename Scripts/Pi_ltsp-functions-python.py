@@ -260,8 +260,8 @@ def updatePiLTSP():
     try:
         os.remove("/home/"+os.environ['SUDO_USER']+"/Pi_ltsp")
     except: pass
-    downloadFile("http://bit.ly/piltspupdate", "/usr/local/bin/Pi_ltsp")
-    downloadFile("https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/Scripts/Pi_ltsp-functions-python.py", "/usr/local/bin/Pi_ltsp-functions-python.py")
+    downloadFile("https://raw.githubusercontent.com/liamn/RaspberryPi-LTSP/master/Pi_ltsp", "/usr/local/bin/Pi_ltsp")
+    downloadFile("https://raw.githubusercontent.com/liamn/RaspberryPi-LTSP/master/Scripts/Pi_ltsp-functions-python.py", "/usr/local/bin/Pi_ltsp-functions-python.py")
     print(0)
 
 
@@ -283,7 +283,7 @@ def checkUpdate():
         print("No release update found!")
 
 def checkKernelFileUpdateWeb():
-    downloadFile("https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/boot/version.txt", "/tmp/kernelVersion.txt")
+    downloadFile("https://raw.githubusercontent.com/liamn/RaspberryPi-LTSP/master/boot/version.txt", "/tmp/kernelVersion.txt")
     import os.path
     user=os.environ['SUDO_USER']
     currentPath="/home/"+user+"/piBoot/version.txt"
@@ -300,7 +300,7 @@ def checkKernelFileUpdateWeb():
         print("0")
 
 def checkKernelUpdater():
-    downloadFile("https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/Scripts/kernelCheckUpdate.sh", "/tmp/kernelCheckUpdate.sh")
+    downloadFile("https://raw.githubusercontent.com/liamn/RaspberryPi-LTSP/master/Scripts/kernelCheckUpdate.sh", "/tmp/kernelCheckUpdate.sh")
 
     import os.path
     if os.path.isfile("/opt/ltsp/armhf/etc/init.d/kernelCheckUpdate.sh"):
