@@ -3,7 +3,7 @@
 #
 # See LICENSE file for copyright and license details
 
-version=0.10.39
+version=0.10.40
 
 #Raspi-LTSP
 #Pi_LTSP
@@ -302,7 +302,7 @@ if [ $Internet -eq 0 ]; then
 		mkdir /opt/raspiLTSP/PiBootBackup
 	fi
 	rm -rf /tmp/PiBoot
-	git clone --depth 1 https://github.com/gbaman/RaspberryPi-LTSP.git /tmp/PiBoot #Clones main repository, including boot files
+	git clone --depth 1 https://github.com/liamn/RaspberryPi-LTSP.git /tmp/PiBoot #Clones main repository, including boot files
 	rm -rf /opt/raspiLTSP/PiBootBackup/*
 	cp /tmp/PiBoot/boot/* /opt/raspiLTSP/PiBootBackup/
 	UpdateIP
@@ -558,7 +558,7 @@ RaspiTheme(){
 #Grabs a copy of the custom Raspberry Pi login screen and applies it
 
 rm -rf RaspberryPi-LTSP
-git clone --depth 1 https://github.com/gbaman/RaspberryPi-LTSP.git
+git clone --depth 1 https://github.com/liamn/RaspberryPi-LTSP.git
 cp -r RaspberryPi-LTSP/themes/raspi /opt/ltsp/armhf/usr/share/ldm/themes/raspi
 rm /opt/ltsp/armhf/etc/alternatives/ldm-theme
 ln -s /usr/share/ldm/themes/raspi /opt/ltsp/armhf/etc/alternatives/ldm-theme
@@ -1155,7 +1155,7 @@ $newVersion" 8 78
 UpdaterOld(){
 	rm -rf /tmp/Pi_ltsp > /dev/null 2>&1
 	#wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/Pi_ltsp -O /tmp/Pi_ltsp
-	wget --content-disposition http://pi-ltsp.net/downloadalpha -O /tmp/Pi_ltsp
+	wget --content-disposition https://raw.githubusercontent.com/liamn/RaspberryPi-LTSP/master/Pi_ltsp -O /tmp/Pi_ltsp
 	exitstatus=$($p updatePiLTSP)
 	if [ $? -eq 0 ]; then 
 		#rm /home/$SUDO_USER/Pi_ltsp > /dev/null 2>&1
@@ -1206,7 +1206,7 @@ xml2 -v > /dev/null 2>&1
 if [ $? -eq 2 ]; then 
 	#echo downloading
 	rm -f /tmp/master.atom > /dev/null 2>&1
-	wget https://github.com/gbaman/RaspberryPi-LTSP/commits/master.atom -O /tmp/master.atom > /dev/null 2>&1
+	wget https://github.com/liamn/RaspberryPi-LTSP/commits/master.atom -O /tmp/master.atom > /dev/null 2>&1
 	if [ $? -eq 0 ]; then
 		checkRelease=$(xml2 < /tmp/master.atom  | grep /feed/entry/title= | sed 's/.*=//' | sed 's/^ *//; s/ *$//; /^$/d' | head -n 1)
 		checkVersion=$(cut -d " " -f 2 <<< "$checkRelease")
@@ -1612,7 +1612,7 @@ if [ $(checkInternet) -eq 0 ]; then
 	AddDesktopShortcutToUser $SUDO_USER
 
 	if [ ! -f "/usr/share/pixmaps/Pi-ltsp-icon.png" ]; then
-		wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/images/Pi-ltsp-icon.png
+		wget https://raw.github.com/liamn/RaspberryPi-LTSP/master/images/Pi-ltsp-icon.png
 		mv Pi-ltsp-icon.png /usr/share/pixmaps/Pi-ltsp-icon.png
 	fi
 
@@ -1659,8 +1659,8 @@ sudo service nbd-server restart
 }
 
 AddPasswordReset(){
-	wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/Scripts/changePassword.sh -O /tmp/changePassword.sh
-	wget https://raw.github.com/gbaman/RaspberryPi-LTSP/master/images/Pi-ltsp-change-password.png -O /tmp/Pi-ltsp-change-password.png
+	wget https://raw.github.com/liamn/RaspberryPi-LTSP/master/Scripts/changePassword.sh -O /tmp/changePassword.sh
+	wget https://raw.github.com/liamn/RaspberryPi-LTSP/master/images/Pi-ltsp-change-password.png -O /tmp/Pi-ltsp-change-password.png
 	cp /tmp/Pi-ltsp-change-password.png /opt/ltsp/armhf/usr/share/pixmaps/Pi-ltsp-change-password.png
 	cp /tmp/changePassword.sh /usr/local/bin/changePassword.sh
 	cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1 | while IFS= read -r user
@@ -1841,7 +1841,7 @@ InstallBlueJ(){
 
 checkPythonFunctionsInstalled(){
 	if [ ! -f $PythonFunctions ]; then
-		wget https://raw.githubusercontent.com/gbaman/RaspberryPi-LTSP/master/Scripts/Pi_ltsp-functions-python.py -O $PythonFunctions
+		wget https://raw.githubusercontent.com/liamn/RaspberryPi-LTSP/master/Scripts/Pi_ltsp-functions-python.py -O $PythonFunctions
 		if [ ! $? -eq 0 ]; then 
 			whiptail --title "Error!" --msgbox "I am sorry, there has been a critical error with Raspi-LTSP. A required library file could not be acquired. Raspi-LTSP is unable to function without this library. This may be because you are not connected to the internet or there may be another problem.
 Please manually download the file from http://bit.ly/14aU4u1 and copy it to $PythonFunctions
@@ -2422,7 +2422,7 @@ FullInstall(){
 Menu() {
 IP=`ifconfig  | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}'`
 
-  MENUOPT=$(whiptail --title "Raspi-LTSP $version Main Menu - $IP" --cancel-button "Quit" --ok-button "Select" --menu "What would you like to do?" 22 80 14 \
+  MENUOPT=$(whiptail --title "KKS Raspi Server $version Main Menu - $IP" --cancel-button "Quit" --ok-button "Select" --menu "What would you like to do?" 22 80 14 \
   	"System-Status" "Display status of key parts of your Raspi-LTSP server" \
   	"Install-Program" "Install a new program on the Raspberry Pi's" \
     "Manage-Users" "Add new users, change passwords and delete users" \
