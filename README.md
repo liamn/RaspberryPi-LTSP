@@ -1,7 +1,7 @@
-RaspberryPi-LTSP
+RaspberryPi-LTSP for Kirkbie Kendal School
 ================
 
-![Login screen](images/Raspi-Login.png)
+### Development should be undertaken on the develop branch. Liam will then merge to master and perform update on server.
       
 ##Raspi-LTSP Documentation Site - http://pi-ltsp.net   
 ------   
