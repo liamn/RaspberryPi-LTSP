@@ -270,7 +270,7 @@ def checkUpdate():
     Grabs the xml commit log to check for releases. Picks out most recent release and returns it.
     """
     loc = "/tmp/raspiupdate.txt"
-    downloadFile("http://bit.ly/piltspcheckmaster", loc)
+    downloadFile("https://github.com/liamn/RaspberryPi-LTSP/commits/master.atom", loc)
     from xml.dom import minidom
     xmldoc = minidom.parse(loc)
     version = xmldoc.getElementsByTagName('title')[1].firstChild.nodeValue
