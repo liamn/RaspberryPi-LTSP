@@ -662,8 +662,8 @@ ltsp-chroot --arch armhf sed /etc/xdg/openbox/LXDE/rc.xml -i -e \
 ltsp-chroot --arch armhf apt-get install -y raspberrypi-artwork
 ltsp-chroot --arch armhf update-alternatives --install /usr/share/images/desktop-base/desktop-background desktop-background /usr/share/raspberrypi-artwork/raspberry-pi-logo.png 100
 ltsp-chroot --arch armhf PCMANFMCFG=/etc/xdg/pcmanfm/LXDE/pcmanfm.conf
-ltsp-chroot --arch armhf sed "$PCMANFMCFG" -i -e 's/^wallpaper_mode.*/wallpaper_mode=4/'
-ltsp-chroot --arch armhf sed "$PCMANFMCFG" -i -e 's/^desktop_bg.*/desktop_bg=#C4C2C2/'
+ltsp-chroot --arch armhf sed "$PCMANFMCFG" -i -e 's/^wallpaper_mode.*/wallpaper_mode=3/'
+ltsp-chroot --arch armhf sed "$PCMANFMCFG" -i -e 's/^desktop_bg.*/desktop_bg=#FFFFFF/'
 ltsp-chroot --arch armhf sed "$PCMANFMCFG" -i -e 's/^su_cmd.*/su_cmd=gksu %s/'
 }
 
