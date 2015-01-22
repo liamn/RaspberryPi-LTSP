@@ -1271,6 +1271,10 @@ AddSambaUser(){
 			
 }		
 
+KKSConfiguration() { # Setup the proxy server
+	ltsp-chroot --arch armhf echo "HTTP_PROXY=172.19.0.1:3128" >> /etc/environment
+	ltsp-chroot --arch armhf echo "http_proxy=172.19.0.1:3128" >> /etc/environment
+}
 
 UpdateAll(){
 	if [ $(checkInternet) -eq 0 ]; then
@@ -2488,6 +2492,7 @@ Rebuild-OS)
     		RaspiTheme
     		PiConfigFixes
     		EnableNBDswap
+    		KKSConfiguration
     		whiptail --title "Extra software" --msgbox "Select any additional software you want to use or use Install-Custom-software to install a specific package from the Raspbian apt repository if you know its name. To quit the menu, use the cancel option. This menu can be later accessed from Install-Program from the main menu." 12 78
 			ExtraSoftware
 			DisableI2C_SPI
