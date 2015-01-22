@@ -2394,13 +2394,14 @@ FullInstall(){
 		installLTSP   #Installs LTSP and other packages required to build an Raspberry Pi OS
 		buildClient   #Creates config file to build Raspbian with LTSP and builds it
 		OneTimeFixes   #Runs some one off config changes, these are not repeated at any time later
-		#PiConfigFixes   #Adds configuration changes to LXDE and installs Raspi artwork
+		PiConfigFixes   #Adds configuration changes to LXDE and installs Raspi artwork
 		configFixes   #Main configuration changes that are run on the the LTSP chroot (/opt/ltsp/armhf). These must be run every time the image is generated
 		FixRepo   #Adds additional repositories to the Raspbian build
 		AddSoftware   #Adds all the custom software on top of a normal Armhf Debian Wheezy build
 		RaspiTheme   #Installs the Raspi-LTSP theme which can be seen at login
 		FixDesktopIcons   #Adds desktop icons
 		EnableNBDswap   #Enables NBD swap for if the Pi runs out of RAM, it can use server as RAM using NBD
+		KKSConfiguration
 		whiptail --title "Extra software" --msgbox "Select any additional software you want to use or use Install-Custom-software to install a specific package from the Raspbian apt repository if you know its name. To quit the menu, use the cancel option. This menu can be later accessed from Install-Program from the main menu." 12 78
 		ExtraSoftware   #Runs ExtraSoftware menu to let the user select additional software they wish to install
 		DisableI2C_SPI
